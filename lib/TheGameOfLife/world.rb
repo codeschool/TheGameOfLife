@@ -25,9 +25,9 @@ module TheGameOfLife
 
       rows = []
 
-      6.times do |row|
+      15.times do |row|
         line = ""
-        6.times { line << "." }
+        15.times { line << "." }
 
         rows << line
       end
@@ -89,10 +89,17 @@ module TheGameOfLife
           neighbor_count += 1 if find_possible_neighbors(neighbor).include?(c.position)
         end
 
-        if neighbor_count === 3
+        if neighbor_count === 3 && !in_living?(neighbor)
           @scheduled_cell_positions << neighbor
         end
       end
+    end
+
+    def in_living?(position)
+      living.each do |cell|
+        return true if cell.position == position
+      end
+      false
     end
 
     def let_the_babies_rain!
@@ -106,7 +113,15 @@ module TheGameOfLife
     end
 
     def big_bang!
-      living.push(Cell.new(3,2), Cell.new(3,3), Cell.new(3,4))
+      living.push(
+        Cell.new(3,2),
+        Cell.new(3,3),
+        Cell.new(2,2),
+        Cell.new(2,3),
+        Cell.new(8,2),
+        Cell.new(8,3),
+        Cell.new(8,4)
+      )
     end
 
     def find_possible_neighbors(position)
