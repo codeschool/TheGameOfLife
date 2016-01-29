@@ -1,5 +1,6 @@
 require "TheGameOfLife/version"
+require "TheGameOfLife/world"
+require "TheGameOfLife/cell"
 
 module TheGameOfLife
-  # Your code goes here...
 end
