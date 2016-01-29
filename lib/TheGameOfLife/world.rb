@@ -135,7 +135,7 @@ module TheGameOfLife
     end
 
     def reset_dat_world!
-      @scheduled_cell_positions = Set.new
+      self.scheduled_cell_positions = Set.new
     end
   end
 end
